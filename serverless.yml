@@ -1,0 +1,40 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: ses-forwarder # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+  environment:
+    bucketName: ses-ejsexton
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+      Resource:
+        - arn:aws:s3:::${self:provider.environment.bucketName}/*
+    - Effect: Allow
+      Action: ses:SendRawEmail
+      Resource:
+        - "*"
+    
+
+functions:
+  sesForwarder:
+    handler: handler.sesForwarder
+    memorySize: 128 # default is 1024
+    timeout: 10 # default is 6

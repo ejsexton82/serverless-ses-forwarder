@@ -1,0 +1,28 @@
+{
+  "name": "ses-forwarder",
+  "version": "1.0.0",
+  "description": "Forward email with Lmabda to SES-verified email address.",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejsexton82/ses-forwarder.git"
+  },
+  "keywords": [
+    "email",
+    "aws",
+    "ses",
+    "lambda"
+  ],
+  "author": "E.J. Sexton <consulting@ejsexton.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejsexton82/ses-forwarder/issues"
+  },
+  "homepage": "https://github.com/ejsexton82/ses-forwarder#readme",
+  "dependencies": {
+    "aws-lambda-ses-forwarder": "git+https://github.com/ejsexton82/aws-lambda-ses-forwarder.git"
+  }
+}
