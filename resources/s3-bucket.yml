@@ -1,0 +1,30 @@
+Resources:
+  EmailsBucket:
+    Type: AWS::S3::Bucket
+  EmailsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref EmailsBucket
+      PolicyDocument:
+        Statement:
+          -
+            Action: 
+              - s3:PutObject
+            Effect: Allow
+            Resource:
+              Fn::Join:
+                - ""
+                -
+                  - !GetAtt EmailsBucket.Arn
+                  - "/*"
+            Principal:
+              Service: ses.amazonaws.com
+            Condition:
+              StringEquals:
+                aws:Referer: !Ref AWS::AccountId
+
+Outputs:
+  EmailsBucketName:
+    Value:
+      Ref: EmailsBucket
+

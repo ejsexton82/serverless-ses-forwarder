@@ -1,0 +1,9 @@
+Resources:
+  SesForwarderLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: ${cf:${self:service}-${self:provider.stage}.SesForwarderLambdaFunctionQualifiedArn}
+      Principal: ses.amazonaws.com
+      SourceAccount: !Ref AWS::AccountId
+
