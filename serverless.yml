@@ -18,7 +18,7 @@ provider:
   runtime: nodejs8.10
 
   environment:
-    bucketName: ses-ejsexton
+    bucketName: !GetAtt EmailsBucket.Arn
 
   iamRoleStatements:
     - Effect: Allow
@@ -26,15 +26,26 @@ provider:
         - s3:PutObject
         - s3:GetObject
       Resource:
-        - arn:aws:s3:::${self:provider.environment.bucketName}/*
+        - Fn::Join:
+          - ''
+          -
+            - Fn::GetAtt: [EmailsBucket, Arn]
+            - '/*'
     - Effect: Allow
       Action: ses:SendRawEmail
       Resource:
         - "*"
-    
 
 functions:
   sesForwarder:
     handler: handler.sesForwarder
     memorySize: 128 # default is 1024
     timeout: 10 # default is 6
+
+resources:
+  # Lambda
+  - ${file(resources/lambda-permissions.yml)}
+  # S3
+  - ${file(resources/s3-bucket.yml)}
+  # SES
+  - ${file(resources/ses-rule-set.yml)}

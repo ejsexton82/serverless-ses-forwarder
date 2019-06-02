@@ -1,0 +1,21 @@
+Resources:
+  SesRuleSet:
+    Type: AWS::SES::ReceiptRuleSet
+  SesS3Rule:
+    Type: AWS::SES::ReceiptRule
+    Properties:
+      Rule: 
+        Actions:
+          - S3Action:
+              BucketName: !GetAtt EmailsBucket.Arn
+              ObjectKeyPrefix: emails
+          - LambdaAction:
+              FunctionArn: ${cf:${self:service}-${self:provider.stage}.SesForwarderLambdaFunctionQualifiedArn}
+      RuleSetName: !Ref SesRuleSet
+    
+Outputs:
+  SesRuleSetName:
+    Value:
+      Ref: SesRuleSet
+    
+
