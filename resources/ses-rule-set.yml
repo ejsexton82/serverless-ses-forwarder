@@ -7,10 +7,10 @@ Resources:
       Rule: 
         Actions:
           - S3Action:
-              BucketName: !GetAtt EmailsBucket.Arn
+              BucketName: !Ref EmailsBucket
               ObjectKeyPrefix: emails
           - LambdaAction:
-              FunctionArn: ${cf:${self:service}-${self:provider.stage}.SesForwarderLambdaFunctionQualifiedArn}
+              FunctionArn: !GetAtt SesForwarderLambdaFunction.Arn
       RuleSetName: !Ref SesRuleSet
     
 Outputs:
