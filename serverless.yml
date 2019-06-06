@@ -13,9 +13,14 @@
 
 service: ses-forwarder # NOTE: update this with your service name
 
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: dev
 
   environment:
     bucketName: !GetAtt EmailsBucket.Arn
@@ -48,4 +53,4 @@ resources:
   # S3
   - ${file(resources/s3-bucket.yml)}
   # SES
-  - ${file(resources/ses-rule-set.yml)}
+  - ${file(resources/ses-rule.yml)}
