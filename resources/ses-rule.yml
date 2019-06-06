@@ -3,13 +3,14 @@ Resources:
     Type: AWS::SES::ReceiptRule
     Properties:
       Rule:
+        Enabled: true
         Actions:
           - S3Action:
               BucketName: !Ref EmailsBucket
               ObjectKeyPrefix: emails
           - LambdaAction:
               FunctionArn: !GetAtt SesForwarderLambdaFunction.Arn
-              RuleSetName: ${self:custom.environment.ses.ruleSetName}
+      RuleSetName: ${self:custom.environment.ses.ruleSetName}
 
 Outputs:
   SesRule:
