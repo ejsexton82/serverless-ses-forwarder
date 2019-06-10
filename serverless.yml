@@ -22,9 +22,6 @@ provider:
   runtime: nodejs8.10
   stage: dev
 
-  environment:
-    bucketName: !GetAtt EmailsBucket.Arn
-
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -46,6 +43,9 @@ functions:
     handler: handler.sesForwarder
     memorySize: 128 # default is 1024
     timeout: 10 # default is 6
+    environment:
+      stage: ${self:custom.stage}
+      bucketName: !Ref EmailsBucket
 
 resources:
   # Lambda
