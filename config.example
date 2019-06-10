@@ -1,0 +1,42 @@
+/**
+ * HOW TO USE:
+ *
+ * 1 Add environment variables for the various stages here
+ * 2 Rename this file to config.js
+ * 3 Make sure to not commit this file.
+ */
+
+'use strict';
+
+module.exports = {
+
+  // Default Configuration
+  default: {
+    // The email will be forwarded from this address
+    // (The Reply-To will be set to the original sender)
+    fromEmail: 'no-reply@domain.example',
+
+    // Prefix the subject line of the email
+    subjectPrefix: 'FW: ',
+
+
+    // Which domains should be forwarded and where
+    forwardMapping: {
+
+      // Matches all verified addresses for the given domain
+      '@sent.example': [
+
+        // Forward email to multiple addresses
+        'first@forwardto.example',
+        'second@forwardto.example'
+      ],
+
+      // Covers one specific address at the specified domain
+      'specific@sentto.example': [
+
+        // Forward email to one address
+        'first@forward-to.example'
+      ],
+    }
+  }
+};
