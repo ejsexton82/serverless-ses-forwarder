@@ -1,28 +1,36 @@
 {
-  "name": "ses-forwarder",
+  "name": "serverless-ses-forwarder",
   "version": "1.0.0",
-  "description": "Forward email with Lmabda to SES-verified email address.",
+  "description": "Serverless email forwarder for Amazon Simple Email Service",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ejsexton82/ses-forwarder.git"
   },
   "keywords": [
-    "email",
-    "aws",
-    "ses",
-    "lambda"
+    "serverless",
+    "AWS SES",
+    "Amazon Simple Email Service",
+    "email forward"
   ],
   "author": "E.J. Sexton <consulting@ejsexton.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ejsexton82/ses-forwarder/issues"
   },
   "homepage": "https://github.com/ejsexton82/ses-forwarder#readme",
   "dependencies": {
     "aws-lambda-ses-forwarder": "git+https://github.com/ejsexton82/aws-lambda-ses-forwarder.git"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0"
   }
 }
