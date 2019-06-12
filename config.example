@@ -6,8 +6,6 @@
  * 3 Make sure to not commit this file.
  */
 
-'use strict';
-
 module.exports = {
 
   // Default Configuration
@@ -28,15 +26,15 @@ module.exports = {
 
         // Forward email to multiple addresses
         'first@forwardto.example',
-        'second@forwardto.example'
+        'second@forwardto.example',
       ],
 
       // Covers one specific address at the specified domain
       'specific@sentto.example': [
 
         // Forward email to one address
-        'first@forward-to.example'
+        'first@forward-to.example',
       ],
-    }
-  }
+    },
+  },
 };
