@@ -1,12 +1,10 @@
-'use strict';
-
-var LambdaForwarder = require('aws-lambda-ses-forwarder');
-var config = require('./config');
+const LambdaForwarder = require('aws-lambda-ses-forwarder');
+const config = require('./config');
 
 module.exports.sesForwarder = function (event, context, callback) {
-  var overrides = {};
-  overrides.config = {...config.default, ...config[process.env.stage]};
+  const overrides = {};
+  overrides.config = { ...config.default, ...config[process.env.stage] };
   overrides.config.emailBucket = process.env.bucketName;
-  overrides.config.emailKeyPrefix = "emails/";
+  overrides.config.emailKeyPrefix = 'emails/';
   LambdaForwarder.handler(event, context, callback, overrides);
-}
+};
