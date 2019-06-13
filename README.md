@@ -23,20 +23,20 @@ From: Some Guy <noreply@verified.com>
 Reply-To: someguy@unverified.com
 ```
 
-###### SES Only Receives Emails for Verified Addresses and Domains
+##### SES Only Receives Emails for Verified Addresses and Domains
 
 Domains and addresses must first be verified before they can be used with this
 forwarder.
 
 See [Verifying Domains in Amazon SES][link-ses-domains].
 
-###### SES Emails are Limited to 10 MB
+##### SES Emails are Limited to 10 MB
 
 This includes attachments after encoding.
 
 See [Limits in Amazon SES][link-ses-limits].
 
-###### New SES Users Start in a Sandbox
+##### New SES Users Start in a Sandbox
 
 Initially, all SES users start in a sandbox environment that has a number of
 limitations. Users must submit a support request to have their accounts removed
