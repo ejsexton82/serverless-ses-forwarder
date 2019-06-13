@@ -3,7 +3,7 @@ Serverless SES Forwarder
 
 [![Serverless][ico-serverless]][link-serverless]
 
-This is a simple, serverless email forwarder that uses [Amazon Simple Email Service (Amazon SES)]([link-ses]). It was built using the [Serverless]([link-serverless]) framework, which is used to build an [Amazon CloudWatch]([link-cloudwatch]) stack that includes most of the necessary assets.
+This is a simple, serverless email forwarder that uses [Amazon Simple Email Service (Amazon SES)][link-ses]. It was built using the [Serverless][link-serverless] framework, which is used to build an [Amazon CloudWatch][link-cloudwatch] stack that includes most of the necessary assets.
 
 
 
