@@ -2,8 +2,8 @@ Serverless SES Forwarder
 ========================
 
 [![Serverless][ico-serverless]][link-serverless]
-[![License](https://img.shields.io/badge/license-MIT-green.svg)][link-license]
 [![SemVer](http://img.shields.io/:SemVer-1.0.0-brightgreen.svg)](http://semver.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)][link-license]
 
 This is a simple, serverless email forwarder that uses [Amazon Simple Email Service (Amazon SES)][link-ses-doc]. It was built using the [Serverless][link-serverless] framework, which is used to create an [Amazon CloudFormation][link-cloudformation] stack that includes most of the necessary assets.
 
@@ -32,10 +32,6 @@ Rename `env.example` to `env.yaml`.
 
 The `env.yaml` file provides the [Amazon SES Rule Set Name][link-ses-rules] that will be used by the [Serverless Framework][link-serverless] to create the Receipt Rule that will forward the email.
 
-It is possible to specify different Rule Set Names for different stages, but
-only one Rule Set can be active at a time. It is usually easier to use the same
-Rule Set for every stage.
-
 ```yaml
 # Prod Stage
 prod:
@@ -47,6 +43,31 @@ default:
   ses:
     ruleSetName: default-rule-set
 ```
+
+It is possible to specify different Rule Set Names for different stages, but
+only one Rule Set can be active at a time. It is usually easier to use the same
+Rule Set for every stage.
+
+#### config.js
+
+Rename `config.example` to `config.js`.
+
+The `config.js` file specifies how emails should be forwarded.
+
+```javascript
+module.exports = {
+  default: {
+    fromEmail: 'no-reply@verified.domain',
+    forwardMapping: {
+      '@sentto.example': [
+        'address@forwardto.example',
+      ],
+    },
+  },
+};
+```
+
+It is possible to specify different configurations for different stages.
 
 About
 -----
@@ -106,7 +127,7 @@ Shout outs to these talented developers:
 [ico-serverless]: http://public.serverless.com/badges/v3.svg
 
 [link-cloudformation]: https://aws.amazon.com/cloudformation/
-[link-license]: https://github.com/ejsexton82/ses-forwarder/blob/master/LICENSE
+[link-license]: https://github.com/ejsexton82/ses-forwarder/blob/master/LICENSE-MIT
 [link-serverless]: http://www.serverless.com/
 [link-serverless-aws]: https://serverless.com/framework/docs/providers/aws/guide/credentials/
 [link-ses]: https://console.aws.amazon.com/ses/home
